@@ -9,7 +9,7 @@ If you wish to play, follow the below steps:
 
 2. Download main.py and words.txt, and store them on the same directory (this could be your downloads folder, desktop, or any other folder, just as long as both files are in the same spot) This makes sure the Python script will be able to find and load from the text file of words.
 
-3. Open main.py and run it!
+3. Open either hangman.py or guess_the_word.py and run it!
 
 ### How it works:
 The script (main.py) reads the text file (words.txt), a list of 800+ words, and randomly selects 1 word that the player will attempt to guess. Players will then select how many 'lives', or times they can get something wrong, they get. Users can then input letters or phrases consisting of the English alphabet and the program will respond differently based on whether the user inputs 1 character or multiple.
