@@ -1,13 +1,13 @@
 # Hangman (or Guess The Word)
 ### Description:
-Created a single-file hangman game based on a verbal description of a homework assignment in a different intermediate Python programming class.
-This version of hangman doesn't include a 'hanging man', so it could be called Guess The Word.
+Created a console hangman game based on a verbal description of a homework assignment in a different intermediate Python programming class.
+There are 3 files, hangman.py, guess_the_word.py, and words.txt. Hangman.py is a true game of hangman, locked at 7 lives and actually displays a hanging man. Guess_the_word.py does not contain an actual hanging man, and the user can select how many lives they would like. Both files pick a random word pulled from words.txt.
 
 ### Instructions:
 If you wish to play, follow the below steps:
 1. Open Command Prompt, and run 'python' or 'python3'. This should return the version of Python you are running and makes sure you have Python installed. If you do not have Python installed, there's plenty of guides on how to do so.
 
-2. Download main.py and words.txt, and store them on the same directory (this could be your downloads folder, desktop, or any other folder, just as long as both files are in the same spot) This makes sure the Python script will be able to find and load from the text file of words.
+2. Download hangman.py or guess_the_word.py, and words.txt, and store them on the same directory (this could be your downloads folder, desktop, or any other folder, just as long as both files are in the same spot) This makes sure the Python script will be able to find and load from the text file of words.
 
 3. Open either hangman.py or guess_the_word.py and run it!
 
