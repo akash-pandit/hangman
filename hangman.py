@@ -1,21 +1,6 @@
 from random import randrange as rr
 
 
-def display_hanged_man(lives):
-    hanged_man = {
-        # key values represent lives left
-        7: '_______\n ||    |\n ||    O\n ||   /|\\\n ||    |\n ||   / \\\n_||_______',  # hanged man with all limbs
-        6: '_______\n ||    |\n ||    O\n ||   /|\\\n ||    |\n ||   /\n_||_______',  # missing 1 leg
-        5: '_______\n ||    |\n ||    O\n ||   /|\\\n ||    |\n ||\n_||_______',  # missing 2 legs
-        4: '_______\n ||    |\n ||    O\n ||   /|\\\n ||\n ||\n_||_______',  # missing 2 legs and lower torso
-        3: '_______\n ||    |\n ||    O\n ||   /|\n ||\n ||\n_||_______',  # missing 2 legs, lower torso, and 1 arm
-        2: '_______\n ||    |\n ||    O\n ||    | ||\n ||\n_||_______',  # missing all limbs and lower torso
-        1: '_______\n ||    |\n ||    O\n ||\n ||\n ||\n_||_______',  # missing all limbs and full torso
-        0: '_______\n ||    |\n ||\n ||\n ||\n ||\n_||_______'  # no more hanged man, game lost
-    }
-    return hanged_man[lives]
-
-
 def display_word_char(base_word: str, guessed_word: list, guess_: str):
     """Changes the visuals of the guessed word (underscores), deducts lives, and handles guessing for
     all inputs of a single character"""
@@ -106,8 +91,18 @@ if __name__ == '__main__':
     # randomly generates an index based on the amt of words in the txt file and uses it to select a word
     guess_word = list('_' * len(word))
     letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
     lives = 7
+    hanged_man = (
+        # indices are the number of lives left (0-7)
+        '_______\n ||    |\n ||\n ||\n ||\n ||\n_||_______',  # no limbs left
+        '_______\n ||    |\n ||    O\n ||\n ||\n ||\n_||_______',  # only head left
+        '_______\n ||    |\n ||    O\n ||    |\n ||\n ||\n_||_______',  # head and upper torso left
+        '_______\n ||    |\n ||    O\n ||   /|\n ||\n ||\n_||_______',  # head, upper torso, 1 arm left
+        '_______\n ||    |\n ||    O\n ||   /|\\\n ||\n ||\n_||_______',  # head, upper torso, both arms left
+        '_______\n ||    |\n ||    O\n ||   /|\\\n ||    |\n ||\n_||_______',  # head, full torso, both arms left
+        '_______\n ||    |\n ||    O\n ||   /|\\\n ||    |\n ||   /\n_||_______',  # head, full torso, both arms, 1 leg
+        '_______\n ||    |\n ||    O\n ||   /|\\\n ||    |\n ||   / \\\n_||_______'  # unharmed
+    )
 
     # print(word)  # UNCOMMENT THIS FOR TESTING PURPOSES
 
@@ -116,7 +111,7 @@ if __name__ == '__main__':
             print('You lost! The word was:', word)
             break
 
-        print('=' * 50, '\n', display_hanged_man(lives), ' ' * 10, 'Word:', ''.join(guess_word), '\n' + '=' * 50)
+        print('=' * 50, '\n', hanged_man[lives], ' ' * 10, 'Word:', ''.join(guess_word), '\n' + '=' * 50)
         guess = input('Guess a letter: ').lower().replace(' ', '', -1)
         while len(guess) < 1 or not guess.isalpha():  # handles invalid guesses
             guess = input('Please provide a letter (or letters) for a guess.\nTake your guess: ')
@@ -129,7 +124,7 @@ if __name__ == '__main__':
         print("Remaining Not Guessed Letters:", ' '.join(list(letters)))
 
     if lives > 0:
-        print('=' * 50, '\n\n', ' ' * 4, ''.join(guess_word), '\n' + '=' * 50)
+        print('=' * 50, '\n', hanged_man[lives], ' ' * 10, 'Word:', ''.join(guess_word), '\n' + '=' * 50)
         print('Congratulations! You won!')
 
 input('[Press ENTER to quit]')  # added for anyone running in console where Exit Code 0 closes the application
